@@ -103,9 +103,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
 class APIConstants:
     CLIENT_SECRETS_FILE = "client_secret.json"
-    REDIRECT_URI = 'http://127.0.0.1:8000/rest/v1/calendar/redirect'
+    REDIRECT_URI = os.environ.get('BASE_URI')+'/rest/v1/calendar/redirect'
     API_SERVICE_NAME = 'calendar'
     API_VERSION = 'v3'
     SCOPES = ['https://www.googleapis.com/auth/userinfo.email',
